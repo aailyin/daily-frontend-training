@@ -1,4 +1,4 @@
-//Example 1
+// Code example
 {} + {};                //NaN
 console.log({} + {});   //"[object Object][object Object]"
 
