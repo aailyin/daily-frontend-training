@@ -1,8 +1,8 @@
 // There's an input string, example:
-var inputString = '[cdvb(gh]){ds*}))--56sdg}';
+var inputString = '[cdvb([gh]){ds*}(()--{56sdg}]';
 /* The task is to pass that string to some function, 
    which whould check whether all brackets are used in an appropriate way,
- */
+   */
 
 //Answer hint:
 
@@ -12,4 +12,48 @@ as soon as we meet closing bracket - we check if the last bracket in stack is co
 If not - error. If yes - pop last bracket from the stack and continue iteration.
 
 BTW: the string in given example would return something like false  :)
- */
+*/
+
+/*
+Dont judge too hard
+The implementation could look like this: 
+*/
+
+function parseString(targetString) {
+	var bracketsStack = [],
+	closingBrackets = ['}',')',']'],
+	bracketsMap = {
+		'{': '}',
+		'(': ')',
+		'[': ']'
+	},
+	i = 0,
+	strLength = targetString.length;
+
+	for( ; i < strLength; i += 1 ) {
+		if ( closingBrackets.indexOf(targetString[i]) != -1 ) {
+			if ( bracketsMap[bracketsStack[bracketsStack.length-1]] == targetString[i] )  {
+				bracketsStack.pop();
+			} else {
+				return {
+					status: 'incorrect',
+					position: i
+				};
+			}
+		} else {
+			if  (Object.keys(bracketsMap).indexOf(targetString[i] ) != -1 ) {
+				bracketsStack.push(targetString[i]);
+			}
+		}
+	}
+
+	if(!bracketsStack.length) {
+		return {
+			status: 'correct'
+		};
+	}
+}
+
+console.log(parseString(inputString).status);
+
+/* We could use Object.values(bracketsMap) instead of closingBrackets, but that technology is in development :) */
