@@ -1,0 +1,198 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" lang="en">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Reem+Kufi" rel="stylesheet">
+    <title>Daily Frontend Training</title>
+
+    <style>
+      header {
+        text-align: center;
+        border-bottom: 1px solid #ccc;
+        margin: 0 20px;
+      }
+      header h1 {
+        display: inline-block;
+        font-family: 'Reem Kufi', sans-serif;
+      }
+      header span {
+        display: block;
+        float: right;
+        margin-top: 20px;
+        line-height: 30px;
+        padding-right: 20px;
+      }
+
+      article {
+
+      }
+
+      .code code {
+        float: left;
+        display: table;
+      }
+      
+      .show-answer label {
+        color: #337ab7;
+        text-decoration: none;
+      }
+
+      .show-answer label:hover {
+        text-decoration: underline;
+      }
+
+      .show-answer input {
+        position: absolute;
+        left: -10000px;
+      }
+      
+      .show-answer .bg-info {
+        display: none;
+      }
+
+      .show-answer input:checked + p {
+        display: block;
+      }
+
+      .show-answer .bg-info span {
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      .bg-info {
+        border-radius: 0 10px 10px 0;
+        padding: 10px;
+        text-align: justify;
+        border-left: 3px solid #1b809e;
+      }
+
+      aside {
+        
+      }
+
+      nav {
+        display: none;
+      }
+
+      footer {
+
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>Daily Frontend Training</h1>
+      <span><a href="#footer">Collaborators</a></span>
+    </header>
+
+    <!-- TODO: add styles for mobile view -->
+    <nav>
+      <ul class="list-unstyled">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+      </ul>
+    </nav>
+    
+    <section class="container">
+      
+      <div class="row">
+        
+        <article class="col-sm-9 col-xs-12">
+          
+          <div id="js-examples" class="js-examples">
+            <h2>JavaScript examples</h2>
+
+            <div id="js-example-1" name="js-example-1" class="example">
+              <h3>Sum of objects</h3>
+              <p>
+                There is the following code:
+                <pre class="code">
+                  <code>{} + {};                // 1) ?<br>console.log({} + {});   // 2) ?</code>
+                </pre>
+                What will be displayed in the first line? In the second?
+              </p>
+              
+              <div class="show-answer">
+                <label for="js-answer-1">Show answer.</label>
+                <input id="js-answer-1" type="checkbox">
+
+                <p class="bg-info">
+                  <span>In the first line will be output <code>"NaN"</code>.</span>
+                  <span>In the second <code>"[object Object][object Object]"</code>.</span>
+
+                  The problem is that JavaScript interprets the first {} as an empty code block and ignores it. 
+                  The NaN is therefore computed by evaluating +{} (plus followed by the second {}). The plus you see here 
+                  is not the binary addition operator, but a unary prefix operator that converts its operand to a number, 
+                  in the same manner as Number(). Why is the first {} interpreted as a code block? Because the complete input 
+                  is parsed as a statement and curly braces at the beginning of a statement are interpreted as starting a code block. 
+                  Arguments of functions or methods are also always parsed as expressions. 
+                  
+                  <a href="http://www.2ality.com/2012/01/object-plus-object.html">Help link.</a>
+                </p>
+              </div><!-- /.show-answer -->
+            </div><!-- /#js-example-1 -->
+
+            <div id="js-example-2" class="example">
+              <h3>Operator precedence</h3>
+              <p>
+                There is the following code:
+                <pre class="code">
+                  <code>var y = 1, x = y = typeof x;<br>console.log('x = ',x); // ?<br>console.log('y = ',y); // ?</code>
+                </pre>
+                What Is the results of two console.log?
+              </p>
+              
+              <div class="show-answer">
+                <label for="js-answer-2">Show answer.</label>
+                <input id="js-answer-2" type="checkbox">
+
+                <p class="bg-info">
+                  <span>In both lines will be output string<code>"undefined"</code>.</span>
+
+                  '=' operator has left-associativity (left-to-right). First <code>typeof x</code> set to 'undefined'. Then the y is also set to 'undefined', then x set to 'undefined'.
+                </p>
+              </div><!-- /.show-answer -->
+            </div><!-- /#js-example-2 -->
+
+          </div><!-- /#js-examples -->
+
+          <div class="css-examples">
+            
+          </div>
+          
+        </article>
+        
+        <!-- TODO: add styles  -->
+        <aside class="col-sm-3 col-xs-12">
+          <ul class="list-unstyled">
+            <li>
+              <h4><a href="#js-examples">JavaScript examples</h4>
+              <ul class="list-unstyled">
+                <li>
+                  <h5><a href="#js-example-1">Sum of objects</a></h5>
+                </li>
+                <li>
+                  <h5><a href="#js-example-2">Operators precedence</a></h5>
+                </li>
+              </ul>
+            </li>
+            <li>2</li>
+            <li>3</li>
+          </ul>
+        </aside>
+      
+      </div>
+
+    </section>
+
+    <!-- TODO: add links to github and styles -->
+    <footer id="footer" class="container">
+      List of collaborators
+    </footer>
+    
+  </body>
+
+</html>
