@@ -1,5 +1,8 @@
 // There's an input string, example:
-var inputString = '[cdvb([gh]){ds*}(()--{56sdg}]';
+var inputString = "function parseString(targetString) {	var bracketsStack = [],i = 0,strLength = targetString.length;" +
+				  "for( ; i < strLength; i += 1 ) {	if ( closingBrackets.indexOf(targetString[i]) != -1 ) { if ( bracketsMap[bracketsStack[bracketsStack.length-1]] == targetString[i] )  {" +
+				  "bracketsStack.pop();} else {return {status: 'incorrect',position: i + 1};}} else {	if  (Object.keys(bracketsMap).indexOf(targetString[i] ) != -1 ) {" +
+				  "bracketsStack.push(targetString[i]);}}}if(!bracketsStack.length) {	return {status: 'correct',position: 'none'};}}";
 /* The task is to pass that string to some function, 
    which whould check whether all brackets are used in an appropriate way,
    */
@@ -37,7 +40,7 @@ function parseString(targetString) {
 			} else {
 				return {
 					status: 'incorrect',
-					position: i
+					position: i + 1
 				};
 			}
 		} else {
@@ -49,11 +52,14 @@ function parseString(targetString) {
 
 	if(!bracketsStack.length) {
 		return {
-			status: 'correct'
+			status: 'correct',
+			position: 'none'
 		};
 	}
 }
 
 console.log(parseString(inputString).status);
+console.log(parseString(inputString).position);
+console.log(inputString);
 
 /* We could use Object.values(bracketsMap) instead of closingBrackets, but that technology is in development :) */
