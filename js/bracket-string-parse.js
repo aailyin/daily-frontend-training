@@ -58,8 +58,9 @@ function parseString(targetString) {
 	}
 }
 
-console.log(parseString(inputString).status);
-console.log(parseString(inputString).position);
-console.log(inputString);
+var result = parseString(inputString);
+console.log('Status : ' + result.status);
+console.log('Error position : ' + result.position);
+console.log('Input string : 'inputString);
 
 /* We could use Object.values(bracketsMap) instead of closingBrackets, but that technology is in development :) */
