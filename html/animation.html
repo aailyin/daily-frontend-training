@@ -1,0 +1,47 @@
+<HTML>
+<head>
+ <style type="text/css">
+	* {
+	  padding: 0;
+	  margin: 0;
+	}
+	.content {
+	  padding: 20px; 
+	}
+	input:focus + .msg {
+	  display: block;
+	}
+	.msg {
+	  display: none;
+	  color: pink;
+	  font: 12px/24px Arial;
+	}
+	.link {
+	  display: block;
+	  padding: 0 5px;
+	}
+	.animated {
+	  animation-duration: .5s;
+	  animation-fill-mode: both;
+	  animation-name: myAnimation;
+	}  
+	@keyframes myAnimation {
+	  from {
+	    opacity: 0;
+	    transform: translate3d(0, -20px, 0);
+	  }
+	  to {
+	    opacity: 1;				
+	    transform: none;
+	  }
+	}
+ </style>
+</head>
+<body>
+ <div class="content">
+   <input value="yo" type="text">
+   <p class="msg animated">Kill Me, Heal Me</p>
+   <a class="link" href="#">link</a>
+ </div>
+</body>
+</HTML>
